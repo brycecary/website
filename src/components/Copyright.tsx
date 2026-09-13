@@ -5,7 +5,7 @@ export default function Copyright() {
         <Box sx={{ mb: 3 }}>
             <footer>
                 <Divider sx={{ m: 3 }} />
-                <Stack direction="row" spacing={2} justifyContent="center">
+                <Stack direction="row" spacing={2} sx={{ justifyContent: "center" }}>
                     <Typography variant="body2" color="text.secondary" align="center" className="fixed-bottom">
                         {`© ${new Date().getFullYear()} Bryce Cary`}
                     </Typography>

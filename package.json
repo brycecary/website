@@ -1,58 +1,49 @@
 {
     "name": "website",
     "description": "Personal website",
-    "version": "2.5.1",
+    "version": "3.0.0",
     "private": true,
+    "type": "module",
     "author": {
         "name": "Bryce Cary",
         "email": "contact@brycecary.dev",
         "url": "https://brycecary.dev"
     },
-    "dependencies": {
-        "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-        "@emotion/react": "11.13.3",
-        "@emotion/styled": "11.13.0",
-        "@fontsource/roboto": "5.1.0",
-        "@mui/icons-material": "6.1.3",
-        "@mui/material": "6.1.3",
-        "@testing-library/jest-dom": "6.5.0",
-        "@testing-library/react": "16.0.1",
-        "@testing-library/user-event": "14.5.2",
-        "@types/jest": "29.5.13",
-        "@types/node": "22.7.5",
-        "@types/react": "18.3.11",
-        "@types/react-dom": "18.3.1",
-        "@types/react-router-dom": "5.3.3",
-        "postcss-normalize": "13.0.1",
-        "react": "18.3.1",
-        "react-dom": "18.3.1",
-        "react-router-dom": "6.27.0",
-        "react-scripts": "5.0.1",
-        "typescript": "5.6.3",
-        "web-vitals": "4.2.3"
-    },
-    "devDependencies": {
-        "browserslist": "4.24.0",
-        "eslint-config-react-app": "^7.0.1"
+    "engines": {
+        "node": ">=22.12.0"
     },
     "scripts": {
-        "start": "react-scripts start",
-        "build": "react-scripts build",
-        "test": "react-scripts test",
-        "eject": "react-scripts eject",
-        "update-bl": "npx browserslist@latest --update-db"
+        "dev": "vite",
+        "build": "tsc --noEmit && vite build",
+        "preview": "vite preview",
+        "typecheck": "tsc --noEmit",
+        "test": "vitest run",
+        "test:watch": "vitest",
+        "test:coverage": "vitest run --coverage"
     },
-    "browserslist": {
-        "production": [
-            ">0.2%",
-            "not dead",
-            "not op_mini all"
-        ],
-        "development": [
-            "last 1 chrome version",
-            "last 1 firefox version",
-            "last 1 safari version"
-        ]
+    "dependencies": {
+        "@emotion/react": "11.14.0",
+        "@emotion/styled": "11.14.1",
+        "@fontsource/roboto": "5.3.0",
+        "@mui/icons-material": "9.4.0",
+        "@mui/material": "9.4.0",
+        "react": "19.3.0",
+        "react-dom": "19.3.0"
     },
-    "packageManager": "yarn@4.5.0"
+    "devDependencies": {
+        "@testing-library/dom": "10.4.1",
+        "@testing-library/jest-dom": "7.0.1",
+        "@testing-library/react": "16.3.3",
+        "@testing-library/user-event": "14.6.7",
+        "@types/node": "26.5.1",
+        "@types/react": "19.3.0",
+        "@types/react-dom": "19.3.0",
+        "@vitejs/plugin-react": "6.1.1",
+        "@vitest/coverage-v8": "5.0.0",
+        "jsdom": "30.0.1",
+        "typescript": "7.0.2",
+        "vite": "8.3.0",
+        "vitest": "5.0.0"
+    },
+    "packageManager": "yarn@4.18.0"
 }

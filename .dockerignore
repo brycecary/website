@@ -1,1 +1,6 @@
-node_modules/
+.git
+.github
+.vscode
+node_modules
+build
+.yarn

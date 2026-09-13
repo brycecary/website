@@ -53,12 +53,12 @@ export default function Projects() {
             <Typography variant="h2" component="h1" gutterBottom>
                 Projects
             </Typography>
-            <Grid container spacing={2} alignItems={"stretch"} justifyContent={"center"}>
+            <Grid container spacing={2} sx={{ alignItems: "stretch", justifyContent: "center" }}>
                 {projects.map((project, idx) => (
-                    <Grid item key={idx} xs={12} md={6}>
+                    <Grid key={idx} size={{ xs: 12, md: 6 }}>
                         <Paper sx={{ p: 2, height: "100%" }}>
                             <Grid container spacing={2}>
-                                <Grid item xs={12} md={9}>
+                                <Grid size={{ xs: 12, md: 9 }}>
                                     <Typography variant="h4" gutterBottom>
                                         {project.name}
                                     </Typography>
@@ -66,17 +66,17 @@ export default function Projects() {
                                         {project.description}
                                     </Typography>
                                     <Grid container spacing={1} sx={{ mt: 3 }}>
-                                        <Grid item>
+                                        <Grid>
                                             <Chip variant="outlined" label={project.active ? "Active" : "Inactive"} color={project.active ? "success" : "warning"} />
                                         </Grid>
                                         {project.tags.map((tag) => (
-                                            <Grid item key={tag}>
+                                            <Grid key={tag}>
                                                 <Chip variant="outlined" label={tag} />
                                             </Grid>
                                         ))}
                                     </Grid>
                                 </Grid>
-                                <Grid item xs={12} md={3}>
+                                <Grid size={{ xs: 12, md: 3 }}>
                                     <Button variant="outlined" href={project.url} startIcon={<OpenInNewIcon />} target="_blank" fullWidth>
                                         View
                                     </Button>

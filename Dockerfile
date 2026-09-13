@@ -1,19 +1,34 @@
-FROM node:22
+# syntax=docker/dockerfile:1
 
-# Set the working directory
+ARG NODE_IMAGE=node:26-alpine
+ARG RUNTIME_IMAGE=alpine:3.22
+
+FROM ${NODE_IMAGE} AS builder
+
+ENV COREPACK_ENABLE_DOWNLOAD_PROMPT=0
 WORKDIR /app
 
-# Enable corepack
-RUN corepack enable
+RUN npm install -g corepack@0.36.0 && corepack enable
 
-# Copy project
-COPY . .
+COPY package.json yarn.lock .yarnrc.yml ./
+RUN yarn install --immutable
 
-# Install dependencies
-RUN yarn install
-
-# Build the project
+COPY tsconfig.json vite.config.ts index.html ./
+COPY public ./public
+COPY src ./src
 RUN yarn build
 
-# Copy files out of the container to a static directory
-CMD sleep 2 && rm -rf /export/* && cp -r /app/build/* /export/
+
+FROM builder AS test
+
+COPY test ./test
+RUN yarn typecheck && yarn test
+
+
+FROM ${RUNTIME_IMAGE} AS runtime
+
+RUN apk upgrade --no-cache
+
+COPY --from=builder /app/build /app/build
+
+CMD ["sh", "-c", "find /export -mindepth 1 -delete && cp -a /app/build/. /export/"]

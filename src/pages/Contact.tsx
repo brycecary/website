@@ -1,4 +1,4 @@
-import { GitHub, LinkedIn, MailOutline, X as XIcon } from "@mui/icons-material";
+import { GitHub, LinkedIn, MailOutlined, X as XIcon } from "@mui/icons-material";
 import { Box, IconButton, Stack, Tooltip, createSvgIcon } from "@mui/material";
 
 interface IContact {
@@ -34,7 +34,7 @@ const contactLinks: IContact[] = [
     {
         name: "contact@brycecary.dev",
         url: "mailto:contact@brycecary.dev",
-        icon: MailOutline,
+        icon: MailOutlined,
     },
     {
         name: "GitHub",
@@ -66,7 +66,7 @@ const contactLinks: IContact[] = [
 export default function Contact() {
     return (
         <Box sx={{ mt: 4 }}>
-            <Stack direction="row" spacing={2} justifyContent="center" sx={{ mb: 2 }}>
+            <Stack direction="row" spacing={2} sx={{ justifyContent: "center", mb: 2 }}>
                 {contactLinks.map((contact) => (
                     <Tooltip key={contact.name} title={contact.name} placement="top">
                         <IconButton href={contact.url} target="_blank" size="large">
